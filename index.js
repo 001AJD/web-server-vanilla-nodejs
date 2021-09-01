@@ -58,8 +58,9 @@ var unifiedServer = function(req,res){
 	req.on('end',function(){
 		buffer += decoder.end();
 		// choose an handler to which the request should be routed to 
+		console.log(trimmedPath);
 		var choosenHandler = typeof(router[trimmedPath]) !== 'undefined' ? router[trimmedPath] : handlers.notFound;
-		console.log(choosenHandler);
+		console.log(choosenHandler.toString());
 		// construct data object to send to handler function
 		var data = {
 			'trimmedPath':trimmedPath,
